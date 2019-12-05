@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+    {% for test in tests %}
+        {{ test.id }}, {{ test.name }}, {{ test.price }}<br>
+    {% endfor %}
+
+{% endblock body %}

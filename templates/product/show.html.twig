@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}getAll{% endblock %}
+{% block body %}
+         {{ product.id }} ,
+         {{ product.name}} ,
+         {{ product.color }} ,
+         {{ product.price }} ,
+         {{ product.createDat|date('Y-m-d') }}<br>
+
+
+    <a href="{{ path('products') }}"> Назад</a>
+
+{% endblock body %}

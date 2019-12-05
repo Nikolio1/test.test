@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}About!{% endblock %}
+   {% block stylesheets %}
+       <link href="{{ asset('css/style.css') }}" rel="stylesheet"/>
+   {% endblock %}
+{% block body %}
+
+    {{ name }}
+    <img class="img" src="{{ asset('images/sym.jpeg') }}" alt="Symfony!"/>
+
+    {% include 'sidebar.html.twig' %}
+{% endblock body %}
