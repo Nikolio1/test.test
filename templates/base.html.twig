@@ -6,7 +6,13 @@
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
+    {% block header %}
 
+        <a href="{{ path('products')}}">Products</a>
+
+        <a href="{{ path('suppliers') }}">Suppliers</a>
+
+    {% endblock %}
     {% for message in app.flashes('success') %}
         <div class="alert alert-success">
             {{ message }}
@@ -14,6 +20,8 @@
     {% endfor %}
         {% block body %}{% endblock %}
 
-        {% block javascripts %}{% endblock %}
+        {% block javascripts %}
+
+        {% endblock %}
     </body>
 </html>

@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}getAll{% endblock %}
+{% block body %}
+         {{ supplier.id }} ,
+         {{ supplier.name}} ,
+         {{ supplier.contactName }} ,
+         {{ supplier.phone }} ,
+         {{ supplier.email }}<br>
+
+
+    <a href="{{ path('suppliers') }}"> Назад</a>
+
+{% endblock body %}

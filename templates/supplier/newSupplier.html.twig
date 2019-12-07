@@ -3,11 +3,9 @@
 
 {% block body %}
 
-
-
     {{ form_start(form) }}
     <div class="form-control">
-        {{ form_label(form.name,'Product name') }}
+        {{ form_label(form.name,'Supplier name') }}
         <div class="form-error">
             {{ form_errors(form.name) }}
         </div>
@@ -17,36 +15,37 @@
     </div>
 
     <div class="form-control">
-        {{ form_label(form.color,'Product color') }}
+        {{ form_label(form.contactName) }}
         <div class="form-error">
-            {{ form_errors(form.color) }}
+            {{ form_errors(form.contactName) }}
         </div>
-        {{ form_widget(form.color) }}
-        <small>{{ form_help(form.color) }}</small>
+        {{ form_widget(form.contactName) }}
+        <small>{{ form_help(form.contactName) }}</small>
 
     </div>
 
     <div class="form-control">
-        {{ form_label(form.price) }}
+        {{ form_label(form.phone) }}
         <div class="form-error">
-            {{ form_errors(form.price) }}
+            {{ form_errors(form.phone) }}
         </div>
-        {{ form_widget(form.price) }}
-        <small>{{ form_help(form.price) }}</small>
+        {{ form_widget(form.phone) }}
+        <small>{{ form_help(form.phone) }}</small>
 
     </div>
     <div class="form-control">
-        {{ form_label(form.createDat) }}
-        {{ form_widget(form.createDat) }}
-        <small>{{ form_help(form.createDat) }}</small>
+        {{ form_label(form.email) }}
         <div class="form-error">
-            {{ form_errors(form.createDat) }}
+            {{ form_errors(form.email) }}
         </div>
+        {{ form_widget(form.email) }}
+        <small>{{ form_help(form.email) }}</small>
+
     </div>
 
     <button type="submit" >Save</button>
 
     {{ form_end(form) }}
-    <a href="{{ path('products') }}">Products</a>
+    <a href="{{ path('suppliers') }}">Suppliers</a>
 
 {% endblock body %}

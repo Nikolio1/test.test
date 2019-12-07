@@ -19,6 +19,10 @@ class ProductController extends AbstractController
 {
     public $base;
 
+    /**
+     * ProductController constructor.
+     * @param BaseHandler $base
+     */
     public function __construct(BaseHandler $base)
     {
         $this->base = $base;
@@ -31,7 +35,7 @@ class ProductController extends AbstractController
      */
     public function products()
     {
-        $products = $this->getDoctrine()
+        $products = $this->base
             ->getRepository(Product::class)
             ->findAll();
 
@@ -49,10 +53,12 @@ class ProductController extends AbstractController
      * @Route("/show/{id}", name="show_product")
      *
      * @param $id
+     *
      * @return Response
      */
     public function show(Product $product)
     {
+       //dd($product);
         if (!$product) {
             throw $this->createNotFoundException(
                 'No event found'
@@ -67,7 +73,8 @@ class ProductController extends AbstractController
     /**
      * @Route("/delete/{id}", name="delete")
      *
-     * @param $id
+     * @param Product $post
+     *
      * @return RedirectResponse
      */
     public function delete(Product $post)
@@ -85,6 +92,7 @@ class ProductController extends AbstractController
      * @Route("/new", name="new")
      *
      * @param Request $request
+     *
      * @return RedirectResponse|Response
      */
     public function new(Request $request)
@@ -112,11 +120,12 @@ class ProductController extends AbstractController
      *
      * @param $id
      * @param Request $request
+     *
      * @return Response|void
      */
     public function edit($id,Request $request)
     {
-        $product = $this->getDoctrine()
+        $product = $this->base
             ->getRepository(Product::class)
             ->find($id);
 
@@ -135,4 +144,5 @@ class ProductController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+
 }

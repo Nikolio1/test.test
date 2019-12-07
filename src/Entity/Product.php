@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ProductRepository")
@@ -35,6 +36,17 @@ class Product
      * @ORM\Column(type="date")
      */
     private $createDat;
+
+    /**
+     *  @ORM\OneToMany(targetEntity="Supplier", mappedBy="product",cascade={"persist"})
+     *
+     * @var ArrayCollection
+     */
+    private $suppliers;
+
+    public function __construct() {
+        $this->suppliers = new ArrayCollection();
+    }
 
     /**
      * @return int|null
@@ -118,5 +130,46 @@ class Product
         $this->createDat = $createDat;
 
         return $this;
+    }
+
+    /**
+     * @param Supplier $supplier
+     *
+     * @return $this
+     */
+    public function addSupplier(Supplier $supplier): self
+    {
+        if (!$this->suppliers->contains($supplier)) {
+            $this->suppliers[] = $supplier;
+            $supplier->setProduct($this);
+        }
+
+        return $this;
+    }
+//
+    /**
+     * @param Supplier $supplier
+     *
+     * @return $this
+     */
+    public function removeSupplier(Supplier $supplier): self
+    {
+        if ($this->suppliers->contains($supplier)) {
+            $this->suppliers->removeElement($supplier);
+            // set the owning side to null (unless already changed)
+            if ($supplier->getProduct() === $this) {
+                $supplier->setProduct(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getSuppliers()
+    {
+        return $this->suppliers;
     }
 }

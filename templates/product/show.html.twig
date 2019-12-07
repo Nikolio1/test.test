@@ -1,13 +1,25 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}getAll{% endblock %}
-{% block body %}
-         {{ product.id }} ,
-         {{ product.name}} ,
-         {{ product.color }} ,
-         {{ product.price }} ,
-         {{ product.createDat|date('Y-m-d') }}<br>
 
+{% block body %}
+    <br>
+        id: {{ product.id }} ,<br>
+        Name: {{ product.name}} ,<br>
+        Data: {{ product.color }} , <br>
+        Price: {{ product.price }} <br>
+        Date:{{ product.createDat|date('Y-m-d') }}<br>
+
+
+    {% for supplier in product.suppliers %}
+        Supplier:
+        {{ supplier.id }} ,
+        {{ supplier.name }} ,
+        {{ supplier.contactName }} ,
+        {{ supplier.phone }} ,
+        {{ supplier.email }}<br>
+    {% endfor %}
+    <br><br>
 
     <a href="{{ path('products') }}"> Назад</a>
 

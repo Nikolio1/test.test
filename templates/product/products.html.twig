@@ -2,21 +2,21 @@
 
 {% block title %}getAll{% endblock %}
 {% block body %}
-
+    <br>
     {% for product in products %}
          {{ product.id }} ,
          {{ product.name}} ,
          {{ product.color }} ,
          {{ product.price }} ,
-         {{ product.createDat|date('Y-m-d') }}
-        <a href="{{ path('show_product', { id: product.id }) }}"> product № {{ product.id}}</a>
-        <a href="{{ path('delete', { id: product.id }) }}">Delete№ {{ product.id}} </a>
+         {{ product.createDat|date('Y-m-d') }} <br>
+        <a href="{{ path('show_product', { id: product.id }) }}">Show</a>
+        <a href="{{ path('delete', { id: product.id }) }}">Delete</a>
         <a href="{{ path('edit',{ id: product.id}) }}">Edit</a>
-        <br>
+        <br><br>
 
 
     {% endfor %}
 
-    <a href="{{ path('new') }}"> form</a>
+    <a href="{{ path('new') }}"> Сreate a new product</a>
 
 {% endblock body %}
