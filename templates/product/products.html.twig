@@ -1,9 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}getAll{% endblock %}
+{% block title %}Products{% endblock %}
 {% block body %}
     <br>
-    {% for product in products %}
+    <h2>Products ({{ products|length }})</h2>
+    <br>
+    {% for product in products|sort %}
          {{ product.id }} ,
          {{ product.name}} ,
          {{ product.color }} ,

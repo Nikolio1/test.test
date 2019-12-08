@@ -38,7 +38,10 @@ class Product
     private $createDat;
 
     /**
-     *  @ORM\OneToMany(targetEntity="Supplier", mappedBy="product",cascade={"persist"})
+     *  @ORM\OneToMany(
+     *     targetEntity="Supplier",
+     *     mappedBy="product",cascade={"persist","remove"}
+     *  )
      *
      * @var ArrayCollection
      */

@@ -34,7 +34,7 @@ class TestController extends AbstractController
         $test->setName('name1');
         $test->setPrice(123);
 
-        $repository = $this->getDoctrine()->getRepository(Product::class);
+        $repository = $this->getDoctrine()->getRepository( Test::class);
         $tests = $repository->findAll();
 
         // tell Doctrine you want to (eventually) save the Product (no queries yet)

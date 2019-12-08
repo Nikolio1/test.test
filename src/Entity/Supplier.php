@@ -38,8 +38,16 @@ class Supplier
 
     /**
 
-     * @ORM\ManyToOne(targetEntity="Product", inversedBy="suppliers")
-     * @ORM\JoinColumn(name="product_id", referencedColumnName="id")
+     * @ORM\ManyToOne(
+     *     targetEntity="Product",
+     *      inversedBy="suppliers"
+     * )
+     * @ORM\JoinColumn(
+     *     name="product_id",
+     *     referencedColumnName="id",
+     *     onDelete="CASCADE",
+     *     nullable=false
+     * )
      */
     private $product;
 
