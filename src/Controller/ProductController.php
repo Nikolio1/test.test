@@ -21,6 +21,7 @@ class ProductController extends AbstractController
 
     /**
      * ProductController constructor.
+     *
      * @param BaseHandler $base
      */
     public function __construct(BaseHandler $base)
@@ -29,7 +30,7 @@ class ProductController extends AbstractController
     }
 
     /**
-     @Route("/products", name="products")
+     * @Route("/products", name="products")
      *
      * @return Response
      */
@@ -123,7 +124,7 @@ class ProductController extends AbstractController
      *
      * @return Response|void
      */
-    public function edit($id,Request $request)
+    public function edit($id, Request $request)
     {
         $product = $this->base
             ->getRepository(Product::class)

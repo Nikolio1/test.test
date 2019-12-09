@@ -119,7 +119,7 @@ class SupplierController extends AbstractController
         ]);
     }
 
-       /**
+    /**
      * @Route("/newSupplier", name="newSupplier")
      *
      * @param Request $request
