@@ -19,6 +19,7 @@ class ProductController extends AbstractController
 {
     public $base;
 
+
     /**
      * ProductController constructor.
      *
@@ -46,14 +47,15 @@ class ProductController extends AbstractController
             );
         }
 
-        return $this->render(
-            'product/products.html.twig', ['products' => $products]);
+        return $this->render('product/products.html.twig', [
+                'products' => $products
+            ]);
     }
 
     /**
      * @Route("/show/{id}", name="show_product")
      *
-     * @param $id
+     * @param Product $product
      *
      * @return Response
      */
@@ -119,16 +121,16 @@ class ProductController extends AbstractController
     /**
      * @Route("/edit/{id}", name="edit")
      *
-     * @param $id
+     * @param Product $product
      * @param Request $request
      *
-     * @return Response|void
+     * @return RedirectResponse|Response
      */
-    public function edit($id, Request $request)
+    public function edit(Product $product, Request $request)
     {
         $product = $this->base
             ->getRepository(Product::class)
-            ->find($id);
+            ->find($product);
 
         $form = $this->createForm(ProductType::class, $product);
 

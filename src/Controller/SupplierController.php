@@ -32,7 +32,7 @@ class SupplierController extends AbstractController
     /**
      * @Route("/suppliers", name="suppliers")
      *
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
     public function suppliers()
     {
@@ -56,11 +56,11 @@ class SupplierController extends AbstractController
      *
      * @param Supplier $supplier
      *
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
     public function show(Supplier $supplier)
     {
-         if (!$supplier) {
+        if (!$supplier) {
             throw $this->createNotFoundException(
                 'No event found'
             );
@@ -72,19 +72,19 @@ class SupplierController extends AbstractController
     }
 
     /**
-     * @Route("/ddeleteSupplier/{id}", name="deleteSupplier")
+     * @Route("/deleteSupplier/{id}", name="deleteSupplier")
      *
-     * @param Supplier $id
+     * @param Supplier $product
      *
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     * @return RedirectResponse
      */
-    public function delete(Supplier $id)
+    public function delete(Supplier $product)
     {
-        if (!$id) {
+        if (!$product) {
             return $this->redirectToRoute('suppliers');
         }
 
-        $this->base->removeObject($id);
+        $this->base->removeObject($product);
 
         return $this->redirectToRoute('suppliers');
     }
@@ -92,16 +92,16 @@ class SupplierController extends AbstractController
     /**
      * @Route("/editSupplier/{id}", name="editSupplier")
      *
-     * @param $id
+     * @param Supplier $product
      * @param Request $request
      *
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
+     * @return RedirectResponse|Response
      */
-    public function edit($id, Request $request)
+    public function edit(Supplier $product, Request $request)
     {
         $supplier= $this->base
             ->getRepository(Supplier::class)
-            ->find($id);
+            ->find($product);
 
         $form = $this->createForm(SupplierType::class, $supplier);
 

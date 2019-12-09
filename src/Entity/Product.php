@@ -47,7 +47,8 @@ class Product
      */
     private $suppliers;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->suppliers = new ArrayCollection();
     }
 
@@ -107,6 +108,7 @@ class Product
 
     /**
      * @param string $price
+     *
      * @return $this
      */
     public function setPrice(string $price): self
@@ -126,6 +128,7 @@ class Product
 
     /**
      * @param \DateTimeInterface $createDat
+     *
      * @return $this
      */
     public function setCreateDat(\DateTimeInterface $createDat): self
@@ -149,7 +152,7 @@ class Product
 
         return $this;
     }
-//
+
     /**
      * @param Supplier $supplier
      *

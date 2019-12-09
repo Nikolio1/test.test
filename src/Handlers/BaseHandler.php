@@ -2,6 +2,7 @@
 
 namespace App\Handlers;
 
+use Doctrine\Common\Persistence\ObjectRepository;
 use Doctrine\ORM\EntityManagerInterface;
 
 /**
@@ -23,7 +24,8 @@ class BaseHandler
 
     /**
      * @param $object
-     * @return \Doctrine\Common\Persistence\ObjectRepository
+     *
+     * @return ObjectRepository
      */
     public function getRepository($object)
     {
@@ -32,6 +34,7 @@ class BaseHandler
 
     /**
      * @param $object
+     *
      * @return mixed
      */
     public function saveObject($object)
@@ -44,6 +47,7 @@ class BaseHandler
 
     /**
      * @param $object
+     *
      * @return mixed
      */
     public function removeObject($object)
