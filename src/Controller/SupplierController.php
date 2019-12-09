@@ -97,7 +97,7 @@ class SupplierController extends AbstractController
      *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
-    public function edit($id,Request $request)
+    public function edit($id, Request $request)
     {
         $supplier= $this->base
             ->getRepository(Supplier::class)
@@ -119,7 +119,7 @@ class SupplierController extends AbstractController
         ]);
     }
 
-    gitt/**
+     /**
      * @Route("/newSupplier", name="newSupplier")
      *
      * @param Request $request
