@@ -1,22 +1,41 @@
 {% extends 'base.html.twig' %}
 
+    {% block header %}
+        <a href="{{ path('products')}}">Products</a>
+        <a href="{{ path('suppliers') }}">Suppliers</a>
+        <a href="{{ path('index-start') }}">Home</a>
+    {% endblock %}
 
   {% block body %}
       <h2>Suppliers({{ suppliers|length }})</h2>
       <br>
-      {% for supplier in suppliers %}
-{#          {{ dump(supplier) }}#}
-          {{ supplier.id }} ,
-          {{ supplier.name }} ,
-          {{ supplier.contactName }} ,
-          {{ supplier.phone }} ,
-          {{ supplier.email }}<br>
-          <a href="{{ path('supplier', { id: supplier.id }) }}"> Show </a>
-          <a href="{{ path('deleteSupplier', { id: supplier.id }) }}">Delete </a>
-          <a href="{{ path('editSupplier',{ id: supplier.id}) }}">Edit</a>
-          <br><br>
-      {% endfor %}
-
+      <table border="1">
+          <tr>
+              <td>id</td>
+              <td>name</td>
+              <td>contactName</td>
+              <td>phone</td>
+              <td>email</td>
+          </tr>
+          {% for supplier in suppliers %}
+              <tr>
+                  <td> {{ supplier.id }}</td>
+                  <td>{{ supplier.name }}</td>
+                  <td>{{ supplier.contactName }}</td>
+                  <td>{{ supplier.phone }}</td>
+                  <td> {{ supplier.email }}</td>
+                  <td>
+                      <a class="show-item" href="{{ path('supplier', { id: supplier.id }) }}"> Show </a>
+                  </td>
+                  <td>
+                      <a class="delete-item" href="{{ path('deleteSupplier', { id: supplier.id }) }}">Delete </a>
+                  </td>
+                  <td>
+                      <a class="edit-item" href="{{ path('editSupplier',{ id: supplier.id}) }}">Edit</a>
+                  </td>
+              </tr>
+          {% endfor %}
+      </table>
     <a href="{{ path('newSupplier') }}"> Сreate a new supplier</a>
 
   {% endblock body %}

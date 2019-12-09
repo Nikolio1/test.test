@@ -29,7 +29,7 @@ class ProductController extends AbstractController
     }
 
     /**
-     *@Route("/products", name="products")
+     @Route("/products", name="products")
      *
      * @return Response
      */

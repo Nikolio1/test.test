@@ -1,24 +1,42 @@
 {% extends 'base.html.twig' %}
 
+{% block header %}
+    <a href="{{ path('products')}}">Products</a>
+    <a href="{{ path('suppliers') }}">Suppliers</a>
+    <a href="{{ path('index-start') }}">Home</a>
+{% endblock %}
+
 {% block title %}Products{% endblock %}
 {% block body %}
     <br>
     <h2>Products ({{ products|length }})</h2>
-    <br>
+    <table border="1">
+        <tr>
+            <td>id</td>
+            <td>name</td>
+            <td>color</td>
+            <td>price</td>
+            <td>createDat</td>
+        </tr>
+
     {% for product in products|sort %}
-         {{ product.id }} ,
-         {{ product.name}} ,
-         {{ product.color }} ,
-         {{ product.price }} ,
-         {{ product.createDat|date('Y-m-d') }} <br>
-        <a href="{{ path('show_product', { id: product.id }) }}">Show</a>
-        <a href="{{ path('delete', { id: product.id }) }}">Delete</a>
-        <a href="{{ path('edit',{ id: product.id}) }}">Edit</a>
-        <br><br>
-
-
+        <tr>
+            <td>{{ product.id }}</td>
+            <td>{{ product.name}}</td>
+            <td> {{ product.color }}</td>
+            <td> {{ product.price }}</td>
+            <td>{{ product.createDat|date('Y-m-d') }}</td>
+            <td>
+                <a class="show-item" href="{{ path('show_product', { id: product.id }) }}">Show</a>
+            </td>
+            <td>
+                <a class="delete-item" href="{{ path('delete', { id: product.id }) }}">Delete</a>
+            </td>
+            <td>
+                <a class="edit-item" href="{{ path('edit',{ id: product.id}) }}">Edit</a>
+            </td>
+        </tr>
     {% endfor %}
-
+    </table>
     <a href="{{ path('new') }}"> Сreate a new product</a>
-
 {% endblock body %}

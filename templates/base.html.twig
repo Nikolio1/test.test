@@ -3,7 +3,9 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+        {% endblock %}
     </head>
     <body>
     {% block header %}
@@ -20,6 +22,13 @@
     {% endfor %}
         {% block body %}{% endblock %}
 
+        {% block jqweri  %}
+            <script
+                    src="https://code.jquery.com/jquery-3.4.1.js"
+                    integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+                    crossorigin="anonymous">
+            </script>
+        {% endblock %}
         {% block javascripts %}
 
         {% endblock %}

@@ -1,4 +1,21 @@
 .img{
     width: 100px;
     height: 50px;
+
+}
+
+.show-item {
+    color: #000;
+}
+
+.delete-item {
+    color: #000;
+}
+
+.edit-item {
+    color: #000;
+}
+
+.suppliers {
+    list-style: none;
 }
